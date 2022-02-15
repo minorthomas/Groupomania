@@ -2,8 +2,6 @@
 const mysql = require("mysql");
 
 //Connect config
-console.log("Tentative de connexion...");
-
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -12,11 +10,11 @@ const db = mysql.createConnection({
 });
 
 db.connect(function (err) {
+  console.log("Tentative de connexion à la base de donnée...");
   if (err) {
     console.error("Connexion impossible " + err);
     return;
   }
-
   console.log("Connexion réussie");
 });
 
