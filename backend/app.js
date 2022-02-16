@@ -1,32 +1,33 @@
-//Imports
-const express = require("express");
-const app = express();
-const cookieParser = require("cookie-parser");
-const path = require("path");
-const helmet = require("helmet");
-const cors = require("cors");
-require("dotenv").config();
+// Centre de lAPI  
 
-require("./config/db");
+const express       = require("express");
+const bodyParser    = require("body-parser");
+const cors          = require("cors");
+const helmet        = require("helmet");
+const path          = require("path");
+const auth          = require("./middleware/auth");
+const app           = express();
 
-//Routes
-// const authRoutes = require("./routes/authRoutes");
-// const userRoutes = require("./routes/userRoutes");
-// const postRoutes = require("./routes/postRoutes");
-// const commentRoutes = require("./routes/commentRoutes");
+const dataBase      = require("./models");
 
-// app.use("/api/auth", authRoutes);
-// app.use("/api/user", userRoutes);
-// app.use("/api/post", postRoutes);
-// app.use("/api/comment", commentRoutes);
+const authRoutes    = require("./routes/auth")
+const userRoutes    = require("./routes/user")
+const messageRoutes = require("./routes/message")
+const commentRoutes = require("./routes/comment")
 
-app.use("/images", express.static(path.join(__dirname, "images")));
-
-//Middlewares
-app.use(cors());
 app.use(helmet());
-app.use(express.json());
-app.use(cookieParser());
+app.use(cors());
 
-//Export
-module.exports = app;
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+dataBase.sequelize.sync();   // Synchronisation de la base de données grâce à Sequelize
+
+app.use("/images",          express.static(path.join(__dirname, "images")));
+app.use("/api/auth",        authRoutes);
+
+app.use("/api/users",       auth, userRoutes);
+app.use("/api/messages",    auth, messageRoutes);
+app.use("/api/comments",    auth, commentRoutes);
+
+module.exports = app
