@@ -1,5 +1,3 @@
-// authentification des requêtes à l'aide de json web token.
-
 const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
