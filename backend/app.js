@@ -1,10 +1,13 @@
 const express = require("express");
+const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
 const path = require("path");
 const auth = require("./middleware/auth");
-const app = express();
+
+app.use(helmet());
+app.use(cors());
 
 const dataBase = require("./models");
 
@@ -12,9 +15,6 @@ const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const postRoutes = require("./routes/post");
 const commentRoutes = require("./routes/comment");
-
-app.use(helmet());
-app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

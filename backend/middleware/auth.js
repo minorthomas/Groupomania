@@ -8,9 +8,7 @@ module.exports = (req, res, next) => {
     if (req.body.userId && req.body.userId !== userId) {
       throw "echec de l'authentififcation";
     } else {
-      console.log();
       console.log("authentification réussie");
-      console.log();
       next();
     }
   } catch (error) {

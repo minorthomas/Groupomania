@@ -1,5 +1,3 @@
-// module de connexion à la base de données
-
 require("dotenv").config();
 const fs = require("fs");
 const path = require("path");
