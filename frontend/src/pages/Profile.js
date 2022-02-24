@@ -80,6 +80,7 @@ export default Profile;
         id="email_login"
         class="form_input_login"
       />
+      <p class="email error">Email incorrect</p>
 
       <input
         type="password"
@@ -89,7 +90,7 @@ export default Profile;
         class="form_input_login"
       />
 
-      <p class="invalid_input_login">
+      <p class="password error">
         L'adresse mail ou le mot de passe est invalide.
       </p>
 

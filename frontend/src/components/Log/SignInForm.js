@@ -20,15 +20,16 @@ const SignInForm = () => {
       },
     })
       .then((res) => {
+        console.log(res);
         if (res.data.errors) {
-          emailError.innerHTML = res.data.errors.email;
+          emailError.innerHTML = res.data.message;
           passwordError.innerHTML = res.data.errors.password;
         } else {
-          window.location = "/";
+          window.location = "#";
         }
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((res) => {
+        console.error(res);
       });
   };
 
