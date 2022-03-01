@@ -36,3 +36,28 @@ module.exports.requireAuth = (req, res, next) => {
     console.log("No token");
   }
 };
+
+module.exports.getUserId = (req, res, next) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const decodedToken = jwt.verify(token, `${process.env.TOKEN_SECRET}`);
+  const userId = decodedToken.userId;
+
+  return userId;
+};
+
+module.exports.getAdmin = (req, res, next) => {
+  try {
+    const token = req.headers.authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, `${process.env.TOKEN_SECRET}`);
+    const isAdmin = decodedToken.isAdmin;
+    if (isAdmin !== true) {
+      throw "interdit aux non admins";
+    } else {
+      next();
+    }
+  } catch {
+    res.status(401).json({
+      error,
+    });
+  }
+};

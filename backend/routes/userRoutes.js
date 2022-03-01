@@ -3,6 +3,7 @@ const router = require("express").Router();
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
 const uploadController = require("../controllers/uploadController");
+// const { requireAuth } = require("../middleware/authMiddleware");
 const multer = require("multer");
 const upload = multer();
 

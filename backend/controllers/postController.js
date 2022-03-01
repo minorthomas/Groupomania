@@ -25,9 +25,10 @@ module.exports.createPost = async (req, res) => {
   if (req.file !== null) {
     try {
       if (
-        req.file.detectedMimeType !== "image/jpg" &&
-        req.file.detectedMimeType !== "image/jpeg" &&
-        req.file.detectedMimeType !== "image/png"
+        req.file.detectedMimeType != "image/jpg" &&
+        req.file.detectedMimeType != "image/png" &&
+        req.file.detectedMimeType != "image/jpeg" &&
+        req.file.detectedMimeType != "image/gif"
       )
         throw Error("invalid file");
 
@@ -36,7 +37,10 @@ module.exports.createPost = async (req, res) => {
       const errors = uploadErrors(error);
       return res.status(201).json({ errors });
     }
-    fileName = Date.now() + "_" + req.body.userId + ".jpg";
+
+    const extension = req.file.detectedFileExtension;
+
+    fileName = Date.now() + "_" + req.body.userId + extension;
 
     await pipeline(
       req.file.stream,
@@ -48,7 +52,6 @@ module.exports.createPost = async (req, res) => {
     userId: req.body.userId,
     post: req.body.post,
     pictureUrl: req.file !== null ? "./images/posts/" + fileName : "",
-    videoUrl: req.body.videoUrl,
   };
 
   try {

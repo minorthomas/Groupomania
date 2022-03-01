@@ -1,6 +1,7 @@
 //Imports
 const router = require("express").Router();
 const postController = require("../controllers/postController");
+// const { requireAuth } = require("../middleware/authMiddleware");
 const multer = require("multer");
 const upload = multer();
 
