@@ -1,7 +1,13 @@
 import React from "react";
+import Routes from "./components/Routes";
+import axios from "axios";
 
 const App = () => {
-  return <div>Hello depuis app</div>;
+  return (
+    <div>
+      <Routes />
+    </div>
+  );
 };
 
 export default App;

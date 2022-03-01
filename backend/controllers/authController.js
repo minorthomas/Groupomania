@@ -3,14 +3,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { signUpErrors } = require("../utils/errorsUtils");
 
-const maxAge = 3 * 24 * 60 * 60 * 1000;
-
-const createToken = (id) => {
-  return jwt.sign({ id }, process.env.TOKEN_SECRET, {
-    expiresIn: maxAge,
-  });
-};
-
 module.exports.signUp = async (req, res) => {
   const { firstname, lastname, email, password } = req.body;
 
@@ -29,15 +21,19 @@ module.exports.signIn = async (req, res) => {
       if (!user) {
         return res.status(401).json({ error: "User unknown" });
       }
-      const token = createToken(user.id);
       bcrypt
         .compare(req.body.password, user.password)
         .then((valid) => {
           if (!valid) {
             return res.status(401).json({ error: "Incorrect password" });
           }
-          res.cookie("jwt", token, { httpOnly: true, maxAge });
-          res.status(200).json({ user: user.id });
+          res.status(200).json({
+            userId: user.id,
+            token: jwt.sign({ userId: user.id }, "TOKEN_SECRET", {
+              expiresIn: "24h",
+            }),
+            isAdmin: user.isAdmin,
+          });
         })
         .catch((error) => res.status(500).json({ message: "Error: " + error }));
     })
@@ -45,6 +41,5 @@ module.exports.signIn = async (req, res) => {
 };
 
 module.exports.logout = (req, res) => {
-  res.cookie("jwt", "", { maxAge: 1 });
   res.redirect("/");
 };

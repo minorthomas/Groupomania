@@ -6,7 +6,6 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const helmet = require("helmet");
 const path = require("path");
-const { checkUser, requireAuth } = require("./middleware/authMiddleware");
 
 //Cors error & helmet security
 app.use(helmet());
@@ -20,12 +19,6 @@ app.use(cookieParser());
 //Sync bdd
 const dataBase = require("./models");
 dataBase.sequelize.sync();
-
-//JWT
-app.get("*", checkUser);
-app.get("/jwtid", requireAuth, (req, res) => {
-  res.status(200).json({ message: "User id: " + res.locals.user.id });
-});
 
 //Routes config
 const userRoutes = require("./routes/userRoutes");
