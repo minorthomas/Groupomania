@@ -6,19 +6,31 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const helmet = require("helmet");
 const path = require("path");
+const { checkUser, requireAuth } = require("./middleware/authMiddleware");
 
-//Cors error & helmet security
-app.use(helmet());
-app.use(cors());
+//Cors error
+app.use(
+  cors({
+    credentials: true,
+    origin: process.env.CLIENT_URL,
+  })
+);
 
-//Parse body & cookie
+//Parse body, cookie, helmet security
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(helmet());
 
 //Sync bdd
 const dataBase = require("./models");
 dataBase.sequelize.sync();
+
+// Jwt
+app.get("*", checkUser);
+app.get("/jwtid", requireAuth, (req, res) => {
+  res.status(200).send(res.locals.user.id);
+});
 
 //Routes config
 const userRoutes = require("./routes/userRoutes");

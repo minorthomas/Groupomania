@@ -1,6 +1,6 @@
 import React from "react";
 import Routes from "./components/Routes";
-import axios from "axios";
+// import axios from "axios";
 
 const App = () => {
   return (

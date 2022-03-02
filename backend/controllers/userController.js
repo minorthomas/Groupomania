@@ -64,7 +64,10 @@ module.exports.deleteUser = async (req, res) => {
             id: user.id,
           },
         })
-          .then(() => res.status(200).json({ message: "Successfully deleted" }))
+          .then(() => {
+            res.clearCookie("jwt");
+            res.status(200).json({ message: "Successfully deleted" });
+          })
           .catch((error) =>
             res.status(400).send({ message: "Error: " + error })
           );
