@@ -18,7 +18,7 @@ app.use(
 
 //Parse body, cookie, helmet security
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(helmet());
 
@@ -29,7 +29,7 @@ dataBase.sequelize.sync();
 // Jwt
 app.get("*", checkUser);
 app.get("/jwtid", requireAuth, (req, res) => {
-  res.status(200).send(res.locals.user.id);
+  res.status(200).json(res.locals.user.id);
 });
 
 //Routes config
