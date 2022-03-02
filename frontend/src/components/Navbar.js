@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { UidContext } from "./AppContext";
+import Logout from "./Log/Logout";
 
 const Navbar = () => {
   const uid = useContext(UidContext);
+
   return (
     <nav>
       <div className="nav-container">
@@ -23,7 +25,7 @@ const Navbar = () => {
                 <h5>Bienvenue test</h5>
               </NavLink>
             </li>
-            logo logout
+            <Logout />
           </ul>
         ) : (
           <ul>
