@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import LeftNav from "../LeftNav";
+import UploadImg from "./UploadImg";
 
 const UpdateProfile = () => {
   const userData = useSelector((state) => state.userReducer);
@@ -13,7 +14,7 @@ const UpdateProfile = () => {
         <div className="left-part">
           <h3>Photo de profil</h3>
           <img src="#" alt="Utilisateur" />
-          UPLOAD pic
+          <UploadImg />
         </div>
       </div>
     </div>

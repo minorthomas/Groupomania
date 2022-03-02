@@ -23,7 +23,7 @@ const Navbar = () => {
           <ul>
             <li></li>
             <li className="welcome">
-              <NavLink exact to="/profil">
+              <NavLink exact to="/profile">
                 <h5>last first name user</h5>
               </NavLink>
             </li>
@@ -33,7 +33,7 @@ const Navbar = () => {
           <ul>
             <li></li>
             <li>
-              <NavLink exact to="/profil">
+              <NavLink exact to="/profile">
                 <img src="./img/icons/login.svg" alt="login" />
               </NavLink>
             </li>
