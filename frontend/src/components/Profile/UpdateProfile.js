@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateBio } from "../../actions/user.actions";
 import LeftNav from "../LeftNav";
+import { dateParser } from "../Utils";
 import UploadImg from "./UploadImg";
 
 const UpdateProfile = () => {
@@ -47,6 +48,7 @@ const UpdateProfile = () => {
               </>
             )}
           </div>
+          <h4>Membre depuis: {dateParser("mardi 5 nov. 2022 à 10:10:10")}</h4>
         </div>
       </div>
     </div>
