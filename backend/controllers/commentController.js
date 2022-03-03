@@ -5,6 +5,7 @@ module.exports.getAllComments = async (req, res) => {
     where: {
       postId: req.params.id,
     },
+    include: ["users", "posts"],
     order: [["createdAt", "DESC"]],
   })
     .then((comments) => res.status(200).json(comments))

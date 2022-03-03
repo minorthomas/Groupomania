@@ -4,6 +4,9 @@ export const GET_POSTS = "GET_POSTS";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
 
+export const ADD_COMMENT = "ADD_COMMENT";
+export const EDIT_COMMENT = "EDIT_COMMENT";
+
 export const getPosts = (num) => {
   return (dispatch) => {
     return axios
@@ -38,6 +41,37 @@ export const deletePost = (id) => {
     })
       .then((res) => {
         dispatch({ type: DELETE_POST, payload: { id } });
+      })
+      .catch((error) => console.log(error));
+  };
+};
+
+export const addComment = (postId, userId, comment) => {
+  return (dispatch) => {
+    return axios({
+      method: "post",
+      url: `${process.env.REACT_APP_API_URL}api/comment/`,
+      data: { postId, userId, comment },
+    })
+      .then((res) => {
+        dispatch({ type: ADD_COMMENT, payload: { postId } });
+      })
+      .catch((error) => console.log(error));
+  };
+};
+
+export const editComment = (id, comment) => {
+  return (dispatch) => {
+    return axios({
+      method: "put",
+      url: `${process.env.REACT_APP_API_URL}api/comment/${id}`,
+      data: { comment },
+    })
+      .then((res) => {
+        dispatch({
+          type: EDIT_COMMENT,
+          payload: { comment, id },
+        });
       })
       .catch((error) => console.log(error));
   };
