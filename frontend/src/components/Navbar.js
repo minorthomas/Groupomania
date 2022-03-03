@@ -22,11 +22,6 @@ const Navbar = () => {
         {uid ? (
           <ul>
             <li></li>
-            <li className="welcome">
-              <NavLink exact to="/profile">
-                <h5>last first name user</h5>
-              </NavLink>
-            </li>
             <Logout />
           </ul>
         ) : (

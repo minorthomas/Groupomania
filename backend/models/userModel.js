@@ -36,7 +36,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       pictureUrl: {
         type: DataTypes.STRING,
-        defaultValue: "./images/default_profile_picture.png",
+        defaultValue:
+          "http://localhost:3000/images/default_profile_picture.png",
       },
       bio: {
         type: DataTypes.STRING(200),

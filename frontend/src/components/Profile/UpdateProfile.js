@@ -19,11 +19,12 @@ const UpdateProfile = () => {
   return (
     <div className="profil-container">
       <LeftNav />
-      <h1> Profil de 'first last name user'</h1>
+      <h1>
+        {userData.user.firstname} {userData.user.lastname}
+      </h1>
       <div className="update-container">
         <div className="left-part">
-          <h3>Photo de profil</h3>
-          <img src="#" alt="Utilisateur" />
+          <img src={userData.user.pictureUrl} alt="Utilisateur" />
           <UploadImg />
         </div>
         <div className="right-part">
@@ -31,7 +32,9 @@ const UpdateProfile = () => {
             <h3>Bio</h3>
             {updateForm === false && (
               <>
-                <p onClick={() => setUpdateForm(!updateForm)}>Bio</p>
+                <p onClick={() => setUpdateForm(!updateForm)}>
+                  {userData.user.bio}
+                </p>
                 <button onClick={() => setUpdateForm(!updateForm)}>
                   Modifier bio
                 </button>
@@ -48,7 +51,7 @@ const UpdateProfile = () => {
               </>
             )}
           </div>
-          <h4>Membre depuis: {dateParser("mardi 5 nov. 2022 à 10:10:10")}</h4>
+          <h4>Membre depuis: {dateParser(userData.user.createdAt)}</h4>
         </div>
       </div>
     </div>

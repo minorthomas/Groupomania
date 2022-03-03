@@ -39,7 +39,9 @@ module.exports.uploadProfilePicture = async (req, res) => {
   try {
     await User.update(
       {
-        pictureUrl: "./images/profiles/" + fileName,
+        pictureUrl: `${req.protocol}://${req.get(
+          "host"
+        )}/images/profiles/${fileName}`,
       },
       {
         where: {

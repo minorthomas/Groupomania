@@ -57,21 +57,16 @@ module.exports.deleteUser = async (req, res) => {
     attributes: { exclude: ["password", "email"] },
   })
     .then((user) => {
-      const profilePicture = user.pictureUrl.split("/images/profiles")[1];
-      fs.unlink(`images/profiles/${profilePicture}`, () => {
-        User.destroy({
-          where: {
-            id: user.id,
-          },
+      User.destroy({
+        where: {
+          id: user.id,
+        },
+      })
+        .then(() => {
+          res.clearCookie("jwt");
+          res.status(200).json({ message: "Successfully deleted" });
         })
-          .then(() => {
-            res.clearCookie("jwt");
-            res.status(200).json({ message: "Successfully deleted" });
-          })
-          .catch((error) =>
-            res.status(400).send({ message: "Error: " + error })
-          );
-      });
+        .catch((error) => res.status(400).send({ message: "Error: " + error }));
     })
     .catch((error) =>
       res.status(500).send({ message: "User not found - Error: " + error })

@@ -51,7 +51,10 @@ module.exports.createPost = async (req, res) => {
   const newPost = {
     userId: req.body.userId,
     post: req.body.post,
-    pictureUrl: req.file !== null ? "./images/posts/" + fileName : "",
+    pictureUrl:
+      req.file !== null
+        ? `${req.protocol}://${req.get("host")}/images/posts/${fileName}`
+        : "",
   };
 
   try {
