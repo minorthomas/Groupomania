@@ -3,6 +3,7 @@ import axios from "axios";
 export const GET_POSTS = "GET_POSTS";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
+export const ADD_POST = "ADD_POST";
 
 export const ADD_COMMENT = "ADD_COMMENT";
 export const UPDATE_COMMENT = "UPDATE_COMMENT";
@@ -44,6 +45,12 @@ export const deletePost = (id) => {
         dispatch({ type: DELETE_POST, payload: { id } });
       })
       .catch((error) => console.log(error));
+  };
+};
+
+export const addPost = (data) => {
+  return (dispatch) => {
+    return axios.post(`${process.env.REACT_APP_API_URL}api/post/`, data);
   };
 };
 

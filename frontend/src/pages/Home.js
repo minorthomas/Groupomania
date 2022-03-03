@@ -1,16 +1,11 @@
-import React, { useContext } from "react";
-import { Redirect } from "react-router-dom";
-import { UidContext } from "../components/AppContext";
+import React from "react";
 import LeftNav from "../components/LeftNav";
 import NewPostForm from "../components/Post/NewPostForm";
 import Thread from "../components/Thread";
 
 const Home = () => {
-  const uid = useContext(UidContext);
-
   return (
     <div>
-      {uid ? <Redirect to="/" /> : <Redirect to="/profile" />}
       <div className="home">
         <LeftNav />
         <div className="main">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { addPost, getPosts } from "../../actions/post.actions";
 import { isEmpty, timestampParser } from "../Utils";
 
 const NewPostForm = () => {
@@ -9,14 +10,29 @@ const NewPostForm = () => {
   const [postPicture, setPostPicture] = useState(null);
   const [file, setFile] = useState();
   const userData = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!isEmpty(userData)) setIsLoading(false);
   }, [userData]);
 
-  const handlePicture = () => {};
+  const handlePicture = (event) => {
+    setPostPicture(URL.createObjectURL(event.target.files[0]));
+    setFile(event.target.files[0]);
+  };
 
-  const handlePost = () => {};
+  const handlePost = async () => {
+    if (post || postPicture) {
+      const data = new FormData();
+      data.append("userId", userData.user.id);
+      data.append("post", post);
+      if (file) data.append("file", file);
+
+      await dispatch(addPost(data));
+      dispatch(getPosts());
+      cancelPost();
+    }
+  };
 
   const cancelPost = () => {
     setPost("");
@@ -59,7 +75,7 @@ const NewPostForm = () => {
                   </div>
                   <div className="content">
                     <p>{post}</p>
-                    <img src={postPicture} alt="post" />
+                    <img src={postPicture} alt="" />
                   </div>
                 </div>
               </li>

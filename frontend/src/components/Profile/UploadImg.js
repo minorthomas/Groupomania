@@ -8,7 +8,7 @@ const UploadImg = () => {
   const userData = useSelector((state) => state.userReducer);
 
   const handlePicture = (event) => {
-    //event.preventDefault(); ------------refresh pas auto (a regler)
+    //event.preventDefault(); //------------refresh pas auto (a regler)
     const data = new FormData();
     data.append("firstname", userData.user.firstname);
     data.append("lastname", userData.user.lastname);

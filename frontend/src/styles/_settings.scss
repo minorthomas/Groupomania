@@ -1,22 +1,22 @@
 @font-face {
   font-family: "font-1";
-  src: url(./assets/fonts/JosefinSans-ExtraLight.ttf);
+  src: url(./assets/fonts/Rubik-Light.ttf);
 }
 @font-face {
   font-family: "font-2";
-  src: url(./assets/fonts/JosefinSans-Regular.ttf);
+  src: url(./assets/fonts/Rubik-Regular.ttf);
 }
 @font-face {
   font-family: "font-3";
-  src: url(./assets/fonts/JosefinSans-Bold.ttf);
+  src: url(./assets/fonts/Rubik-Bold.ttf);
 }
 
 $font-1: "font-1", sans-serif;
 $font-2: "font-2", serif;
 $font-3: "font-3", serif;
 
-$color-1: #ff7b77;
-$color-2: #ffd0c4;
+$dark-grey: #202020;
+$medium-grey: #2b2b2b;
 $color-3: rgb(0, 22, 44);
 $color-4: #fdeeee;
 $black: rgb(40, 40, 40);
