@@ -34,17 +34,17 @@ export const uploadPicture = (data, id) => {
   };
 };
 
-export const updateBio = (userId, bio) => {
+export const updateBio = (id, bio) => {
   return (dispatch) => {
     return axios({
       method: "put",
-      url: `${process.env.REACT_APP_API_URL}api/user/` + userId,
+      url: `${process.env.REACT_APP_API_URL}api/user/${id}`,
       data: { bio },
     })
       .then((res) => {
         dispatch({
           type: UPDATE_BIO,
-          payload: bio,
+          payload: { bio, id },
         });
       })
       .catch((error) => console.log(error));

@@ -28,8 +28,6 @@ module.exports.updateUser = async (req, res) => {
     .then((user) => {
       User.update(
         {
-          firstname: req.body.firstname,
-          lastname: req.body.lastname,
           bio: req.body.bio,
         },
         {

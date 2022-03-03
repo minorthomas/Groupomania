@@ -6,6 +6,7 @@ export const DELETE_POST = "DELETE_POST";
 
 export const ADD_COMMENT = "ADD_COMMENT";
 export const UPDATE_COMMENT = "UPDATE_COMMENT";
+export const DELETE_COMMENT = "DELETE_COMMENT";
 
 export const getPosts = (num) => {
   return (dispatch) => {
@@ -69,6 +70,19 @@ export const updateComment = (id, comment) => {
     })
       .then((res) => {
         dispatch({ type: UPDATE_COMMENT, payload: { comment, id } });
+      })
+      .catch((error) => console.log(error));
+  };
+};
+
+export const deleteComment = (id) => {
+  return (dispatch) => {
+    return axios({
+      method: "delete",
+      url: `${process.env.REACT_APP_API_URL}api/comment/${id}`,
+    })
+      .then((res) => {
+        dispatch({ type: DELETE_POST, payload: { id } });
       })
       .catch((error) => console.log(error));
   };

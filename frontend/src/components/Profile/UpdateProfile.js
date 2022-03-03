@@ -44,9 +44,9 @@ const UpdateProfile = () => {
                 <textarea
                   type="text"
                   defaultValue={userData.user.bio}
-                  onChange={(event) => setBio(event.target.value)}
+                  onChange={(e) => setBio(e.target.value)}
                 ></textarea>
-                <button onClick={handleUpdate}>Valider</button>
+                <button onClick={handleUpdate}>Valider modifications</button>
               </>
             )}
           </div>

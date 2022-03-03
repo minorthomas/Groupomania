@@ -3,6 +3,7 @@ import {
   UPDATE_COMMENT,
   GET_POSTS,
   UPDATE_POST,
+  DELETE_COMMENT,
 } from "../actions/post.actions";
 
 const initialState = {};
@@ -34,6 +35,9 @@ export default function postReducer(state = initialState, action) {
           };
         } else return comment;
       });
+
+    case DELETE_COMMENT:
+      return state.filter((comment) => comment.id !== action.payload.id);
 
     default:
       return state;

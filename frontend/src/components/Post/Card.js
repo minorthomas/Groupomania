@@ -28,7 +28,7 @@ const Card = ({ post }) => {
   return (
     <li className="card-container" key={post.id}>
       {isLoading ? (
-        <i className="fas fa-spinner fa-spin"></i>
+        <i className="fas fa-spinner fa-pulse"></i>
       ) : (
         <>
           <div className="card-left">
