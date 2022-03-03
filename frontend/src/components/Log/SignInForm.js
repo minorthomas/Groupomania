@@ -24,7 +24,7 @@ const SignInForm = () => {
           emailError.innerHTML = res.data.errors.email;
           passwordError.innerHTML = res.data.erros.password;
         } else {
-          window.location = "/profile";
+          window.location = "/";
         }
       })
       .catch((error) => {
