@@ -26,25 +26,20 @@ module.exports.updateUser = async (req, res) => {
     attributes: { exclude: ["password", "email"] },
   })
     .then((user) => {
-      const profilePicture = user.pictureUrl.split("images/profiles")[1];
-      fs.unlink(`images/profiles/${profilePicture}`, () => {
-        User.update(
-          {
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            bio: req.body.bio,
+      User.update(
+        {
+          firstname: req.body.firstname,
+          lastname: req.body.lastname,
+          bio: req.body.bio,
+        },
+        {
+          where: {
+            id: user.id,
           },
-          {
-            where: {
-              id: user.id,
-            },
-          }
-        )
-          .then(() => res.status(201).send({ message: "Account updated" }))
-          .catch((error) =>
-            res.status(400).send({ message: "Error: " + error })
-          );
-      });
+        }
+      )
+        .then(() => res.status(201).send({ message: "Account updated" }))
+        .catch((error) => res.status(400).send({ message: "Error: " + error }));
     })
     .catch((error) =>
       res.status(500).send({ message: "User not found - Error: " + error })

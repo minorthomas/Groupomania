@@ -24,7 +24,7 @@ const UpdateProfile = () => {
       </h1>
       <div className="update-container">
         <div className="left-part">
-          <img src={userData.user.pictureUrl} alt="user profile picture" />
+          <img src={userData.user.pictureUrl} alt="user profile" />
           <UploadImg />
         </div>
         <div className="right-part">
