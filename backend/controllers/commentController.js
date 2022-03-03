@@ -41,7 +41,7 @@ module.exports.updateComment = async (req, res) => {
           },
         }
       )
-        .then(() => res.status(201).send({ message: "Comment updated" }))
+        .then(() => res.status(200).send({ message: "Comment updated" }))
         .catch((error) => res.status(400).send({ message: "Error: " + error }));
     })
     .catch((error) =>

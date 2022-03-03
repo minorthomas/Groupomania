@@ -24,12 +24,11 @@ const UpdateProfile = () => {
       </h1>
       <div className="update-container">
         <div className="left-part">
-          <img src={userData.user.pictureUrl} alt="Utilisateur" />
+          <img src={userData.user.pictureUrl} alt="user profile picture" />
           <UploadImg />
         </div>
         <div className="right-part">
           <div className="bio-update">
-            <h3>Bio</h3>
             {updateForm === false && (
               <>
                 <p onClick={() => setUpdateForm(!updateForm)}>
@@ -44,7 +43,7 @@ const UpdateProfile = () => {
               <>
                 <textarea
                   type="text"
-                  defaultValue="Bio"
+                  defaultValue={userData.user.bio}
                   onChange={(event) => setBio(event.target.value)}
                 ></textarea>
                 <button onClick={handleUpdate}>Valider</button>

@@ -1,21 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { editComment } from "../../actions/post.actions";
+import { updateComment } from "../../actions/post.actions";
 import { UidContext } from "../AppContext";
 
-const CrudComment = ({ comment, postId }) => {
+const CrudComment = ({ comment }) => {
   const [isAuthor, setIsAuthor] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [commentText, setCommentText] = useState("");
+  const [text, setText] = useState("");
   const uid = useContext(UidContext);
   const dispatch = useDispatch();
 
   const handleEdit = (event) => {
     event.preventDefault();
 
-    if (commentText) {
-      dispatch(editComment(postId, comment.id, comment));
-      setCommentText("");
+    if (text) {
+      dispatch(updateComment(comment.id, comment.comment));
+      setText("");
       setEdit(false);
     }
   };
@@ -45,7 +45,7 @@ const CrudComment = ({ comment, postId }) => {
           <input
             type="text"
             name="text"
-            onChange={(event) => setCommentText(event.target.value)}
+            onChange={(event) => setText(event.target.value)}
             defaultValue={comment.comment}
           />
           <br />

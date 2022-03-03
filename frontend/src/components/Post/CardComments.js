@@ -26,7 +26,7 @@ const CardComments = ({ post }) => {
         return (
           <div
             className={
-              post.comments.userId === userData.id
+              comment.userId === userData.id
                 ? "comment-container client"
                 : "comment-container"
             }
@@ -60,7 +60,7 @@ const CardComments = ({ post }) => {
                   <span>{dateParser(comments.createdAt)}</span>
                 </div>
                 <p>{comments.comment}</p>
-                <CrudComment comment={comments} postId={post.id} />
+                <CrudComment comment={comments} />
               </div>
             </div>
           </div>

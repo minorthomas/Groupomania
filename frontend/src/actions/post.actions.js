@@ -5,7 +5,7 @@ export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
 
 export const ADD_COMMENT = "ADD_COMMENT";
-export const EDIT_COMMENT = "EDIT_COMMENT";
+export const UPDATE_COMMENT = "UPDATE_COMMENT";
 
 export const getPosts = (num) => {
   return (dispatch) => {
@@ -60,7 +60,7 @@ export const addComment = (postId, userId, comment) => {
   };
 };
 
-export const editComment = (id, comment) => {
+export const updateComment = (id, comment) => {
   return (dispatch) => {
     return axios({
       method: "put",
@@ -68,10 +68,7 @@ export const editComment = (id, comment) => {
       data: { comment },
     })
       .then((res) => {
-        dispatch({
-          type: EDIT_COMMENT,
-          payload: { comment, id },
-        });
+        dispatch({ type: UPDATE_COMMENT, payload: { comment, id } });
       })
       .catch((error) => console.log(error));
   };
