@@ -10,6 +10,7 @@ import rootReducer from "./reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { getUser } from "./actions/user.actions";
 import { getPosts } from "./actions/post.actions";
+import { getUsers } from "./actions/users.actions";
 
 function saveToLocalStorage(state) {
   try {
@@ -42,6 +43,7 @@ store.subscribe(() => saveToLocalStorage(store.getState()));
 
 store.dispatch(getPosts());
 store.dispatch(getUser());
+store.dispatch(getUsers());
 
 ReactDOM.render(
   <Provider store={store}>
