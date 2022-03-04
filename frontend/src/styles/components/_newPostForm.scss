@@ -3,12 +3,12 @@
   padding: 16px 40px;
   border-radius: 20px;
   position: relative;
-  background: $color-4;
+  background: $medium-grey;
 
   i {
     font-size: 1.5rem;
     margin: 20px 0;
-    color: $color-3;
+    color: $light-grey;
   }
 
   .data {
@@ -51,9 +51,10 @@
       font-size: 1.4rem;
       padding: 12px 15px;
       border-radius: 20px 20px 6px 20px;
+      color: $white;
     }
     .card-container {
-      background: $white;
+      background: $medium-grey;
       border-radius: 20px 20px 6px 20px;
 
       .card-left {
@@ -81,6 +82,7 @@
             }
           }
           span {
+            font-style: normal;
             @media screen and(max-width: 632px) {
               position: absolute;
               top: 40px;
@@ -134,7 +136,7 @@
         button {
           width: 190px;
           padding: 10px 20px;
-          background: $white;
+          background: $pink;
           transition: 0.2s;
 
           &:hover {
@@ -164,11 +166,11 @@
         .cancel {
           border-radius: 20px;
           margin-right: 8px;
-          background: $white;
+          background: $pink;
 
           &:hover {
-            color: $color-4;
-            background: $color-3;
+            color: $black;
+            background: $medium-pink;
           }
         }
         .send {

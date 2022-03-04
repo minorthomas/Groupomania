@@ -13,7 +13,6 @@ const Profile = () => {
       ) : (
         <div className="log-container">
           <Log />
-          <img src="#" alt="Login" />
         </div>
       )}
     </div>

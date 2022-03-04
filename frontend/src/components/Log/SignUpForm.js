@@ -123,7 +123,7 @@ const SignUpForm = () => {
           />
           <div className="password-confirm error"></div>
           <br />
-          <input type="submit" value="Inscription" />
+          <input className="submit-btn" type="submit" value="Inscription" />
         </form>
       )}
     </>

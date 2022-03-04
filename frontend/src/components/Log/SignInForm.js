@@ -56,7 +56,7 @@ const SignInForm = () => {
       />
       <div className="password error"></div>
       <br />
-      <input type="submit" value="Se connecter" />
+      <input className="submit-btn" type="submit" value="Se connecter" />
     </form>
   );
 };
