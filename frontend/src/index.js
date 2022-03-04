@@ -39,11 +39,11 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 
-store.subscribe(() => saveToLocalStorage(store.getState()));
-
-store.dispatch(getPosts());
 store.dispatch(getUser());
 store.dispatch(getUsers());
+store.dispatch(getPosts());
+
+store.subscribe(() => saveToLocalStorage(store.getState()));
 
 ReactDOM.render(
   <Provider store={store}>
