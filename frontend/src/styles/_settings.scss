@@ -103,3 +103,26 @@ body {
   color: green;
   font-weight: bold;
 }
+
+#scrollToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: $pink;
+  color: $black;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 18px;
+  @media screen and(max-width: 991px) {
+    padding: 5px 10px;
+  }
+}
+
+#scrollToTopBtn:hover {
+  background-color: $medium-pink;
+}
