@@ -1,13 +1,18 @@
 import axios from "axios";
 
+//post
 export const GET_POSTS = "GET_POSTS";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
 export const ADD_POST = "ADD_POST";
 
+//comment
 export const ADD_COMMENT = "ADD_COMMENT";
 export const UPDATE_COMMENT = "UPDATE_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
+
+// error
+export const GET_POST_ERRORS = "GET_POST_ERRORS";
 
 export const getPosts = (num) => {
   return (dispatch) => {
@@ -50,7 +55,15 @@ export const deletePost = (id) => {
 
 export const addPost = (data) => {
   return (dispatch) => {
-    return axios.post(`${process.env.REACT_APP_API_URL}api/post/`, data);
+    return axios
+      .post(`${process.env.REACT_APP_API_URL}api/post/`, data)
+      .then((res) => {
+        if (res.data.errors) {
+          dispatch({ type: GET_POST_ERRORS, payload: res.data.errors });
+        } else {
+          dispatch({ type: GET_POST_ERRORS, payload: "" });
+        }
+      });
   };
 };
 

@@ -9,7 +9,7 @@ import rootReducer from "./reducers";
 //devtools
 import { composeWithDevTools } from "redux-devtools-extension";
 import { getUser } from "./actions/user.actions";
-import { getPosts } from "./actions/post.actions";
+import { getPosts, addPost } from "./actions/post.actions";
 import { getUsers } from "./actions/users.actions";
 
 function saveToLocalStorage(state) {
@@ -42,6 +42,7 @@ const store = createStore(
 store.dispatch(getUser());
 store.dispatch(getUsers());
 store.dispatch(getPosts());
+store.dispatch(addPost());
 
 store.subscribe(() => saveToLocalStorage(store.getState()));
 

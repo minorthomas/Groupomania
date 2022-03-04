@@ -8,11 +8,11 @@ import UploadImg from "./UploadImg";
 const UpdateProfile = () => {
   const [bio, setBio] = useState("");
   const [updateForm, setUpdateForm] = useState(false);
-  const userData = useSelector((state) => state.userReducer);
+  const userData = useSelector((state) => state.userReducer.user);
   const dispatch = useDispatch();
 
   const handleUpdate = () => {
-    dispatch(updateBio(userData.user.id, bio));
+    dispatch(updateBio(userData.id, bio));
     setUpdateForm(false);
   };
 
@@ -20,20 +20,18 @@ const UpdateProfile = () => {
     <div className="profil-container">
       <LeftNav />
       <h1>
-        {userData.user.firstname} {userData.user.lastname}
+        {userData.firstname} {userData.lastname}
       </h1>
       <div className="update-container">
         <div className="left-part">
-          <img src={userData.user.pictureUrl} alt="user profile" />
+          <img src={userData.pictureUrl} alt="user profile" />
           <UploadImg />
         </div>
         <div className="right-part">
           <div className="bio-update">
             {updateForm === false && (
               <>
-                <p onClick={() => setUpdateForm(!updateForm)}>
-                  {userData.user.bio}
-                </p>
+                <p onClick={() => setUpdateForm(!updateForm)}>{userData.bio}</p>
                 <button onClick={() => setUpdateForm(!updateForm)}>
                   Modifier bio
                 </button>
@@ -43,14 +41,14 @@ const UpdateProfile = () => {
               <>
                 <textarea
                   type="text"
-                  defaultValue={userData.user.bio}
+                  defaultValue={userData.bio}
                   onChange={(e) => setBio(e.target.value)}
                 ></textarea>
                 <button onClick={handleUpdate}>Valider modifications</button>
               </>
             )}
           </div>
-          <h4>Membre depuis: {dateParser(userData.user.createdAt)}</h4>
+          <h4>Membre depuis: {dateParser(userData.createdAt)}</h4>
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ const NewPostForm = () => {
   const [postPicture, setPostPicture] = useState(null);
   const [file, setFile] = useState();
   const userData = useSelector((state) => state.userReducer);
+  const error = useSelector((state) => state.errorReducer.postError);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -91,6 +92,8 @@ const NewPostForm = () => {
                   onChange={(event) => handlePicture(event)}
                 />
               </div>
+              {!isEmpty(error.format) && <p>{error.format}</p>}
+              {!isEmpty(error.maxSize) && <p>{error.maxSize}</p>}
               <div className="btn-send">
                 {post || postPicture ? (
                   <button className="cancel" onClick={cancelPost}>

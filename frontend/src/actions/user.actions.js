@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//user
 export const GET_USER = "GET_USER";
 export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
 export const UPDATE_BIO = "UPDATE_BIO";
