@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateBio } from "../../actions/user.actions";
+import { deleteAccount, updateBio } from "../../actions/user.actions";
 import LeftNav from "../LeftNav";
 import { dateParser } from "../Utils";
 import UploadImg from "./UploadImg";
@@ -14,6 +14,10 @@ const UpdateProfile = () => {
   const handleUpdate = () => {
     dispatch(updateBio(userData.id, bio));
     setUpdateForm(false);
+  };
+
+  const handleDelete = () => {
+    dispatch(deleteAccount(userData.id));
   };
 
   return (
@@ -49,6 +53,16 @@ const UpdateProfile = () => {
             )}
           </div>
           <h4>Membre depuis: {dateParser(userData.createdAt)}</h4>
+          <button
+            onClick={() => {
+              if (window.confirm("Voulez-vous supprimer votre compte ?")) {
+                handleDelete();
+                window.location.href = "http://localhost:8080/profile";
+              }
+            }}
+          >
+            Supprimer le compte
+          </button>
         </div>
       </div>
     </div>

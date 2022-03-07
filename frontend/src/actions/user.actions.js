@@ -4,6 +4,7 @@ import axios from "axios";
 export const GET_USER = "GET_USER";
 export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
 export const UPDATE_BIO = "UPDATE_BIO";
+export const DELETE_ACCOUNT = "DELETE_ACCOUNT";
 
 export const getUser = (uid) => {
   return (dispatch) => {
@@ -47,6 +48,19 @@ export const updateBio = (id, bio) => {
           type: UPDATE_BIO,
           payload: { bio, id },
         });
+      })
+      .catch((error) => console.log(error));
+  };
+};
+
+export const deleteAccount = (id) => {
+  return (dispatch) => {
+    return axios({
+      method: "delete",
+      url: `${process.env.REACT_APP_API_URL}api/user/${id}`,
+    })
+      .then((res) => {
+        dispatch({ type: DELETE_ACCOUNT, payload: { id } });
       })
       .catch((error) => console.log(error));
   };

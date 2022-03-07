@@ -56,7 +56,7 @@ const NewPostForm = () => {
             <textarea
               name="message"
               id="message"
-              placeholder="Quoi de neuf ?"
+              placeholder="Ecrire un message"
               onChange={(event) => setPost(event.target.value)}
               value={post}
             />
