@@ -227,6 +227,13 @@
         margin: auto;
         color: $light-grey;
       }
+      .delete-account-btn {
+        background-color: #ff4848;
+        border-radius: 0.8em;
+      }
+      .delete-account-btn:hover {
+        background-color: #ff0000;
+      }
       h5 {
         background: $color-1;
         color: $color-4;

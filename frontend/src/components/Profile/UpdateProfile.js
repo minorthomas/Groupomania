@@ -54,6 +54,7 @@ const UpdateProfile = () => {
           </div>
           <h4>Membre depuis: {dateParser(userData.createdAt)}</h4>
           <button
+            className="delete-account-btn"
             onClick={() => {
               if (window.confirm("Voulez-vous supprimer votre compte ?")) {
                 handleDelete();
