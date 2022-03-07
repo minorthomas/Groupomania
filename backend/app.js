@@ -41,8 +41,8 @@ const commentRoutes = require("./routes/commentRoutes");
 //Routes
 app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/api/user", userRoutes);
-app.use("/api/post", requireAuth, postRoutes);
-app.use("/api/comment", requireAuth, commentRoutes);
+app.use("/api/post", postRoutes);
+app.use("/api/comment", commentRoutes);
 
 //Export
 module.exports = app;
