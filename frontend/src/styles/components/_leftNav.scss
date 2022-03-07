@@ -1,6 +1,5 @@
 .left-nav-container {
   position: relative;
-
   .icons {
     position: fixed;
     z-index: 10;
@@ -12,7 +11,9 @@
     .icons-bis {
       position: absolute;
       left: 10px;
-
+      a:focus {
+        transform: scale(1.15);
+      }
       a {
         transition: 0.1s;
         display: inline-block;

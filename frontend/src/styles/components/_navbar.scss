@@ -1,3 +1,6 @@
+a:focus {
+  transform: scale(1.02);
+}
 nav {
   position: fixed;
   width: 100%;
@@ -35,6 +38,9 @@ nav {
     .logo {
       display: flex;
       align-items: center;
+      a:focus {
+        transform: scale(1.02);
+      }
 
       h3 {
         transform: translate(15px, 2px);
@@ -58,6 +64,9 @@ nav {
 
       .welcome {
         transform: translateY(2px);
+        a:focus {
+          transform: scale(1.02);
+        }
 
         @media screen and(max-width: 590px) {
           display: none;
