@@ -6,8 +6,9 @@ __FRONT (REACT PROJECT)__
 Dans le fichier frontend:
 
  __Lancez la console puis collez la ligne suivante pour installer tous les modules:__
- * npm install
- Créez un fichier nommé ".env" puis collez les lignes suivantes:
+ * npm install  
+ 
+ __Créez un fichier nommé ".env" puis collez les lignes suivantes:__
  * REACT_APP_API_URL = http://localhost:3000/
  * PORT = 8080
 
@@ -22,7 +23,7 @@ __BACK (NODE SERVER)__
 Dans le fichier backend:
 
 __Lancez la console puis collez la ligne suivante pour installer tous les modules:__
- * npm install
+ * npm install  
 
 __Créez un fichier nommé ".env" puis collez les lignes suivantes:__
 * TOKEN_SECRET = sU4PsW4SQebWG0GLtOJkzIQsKMgWENHRPDYZBr2tQdy2GFQCMItcmuskeyOPIkYxgajzRx1U2Ta4q5n9n32P6nJa53mYbr4pmcS0
