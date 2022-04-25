@@ -1,6 +1,6 @@
 Clonez le projet
 
-Créez une base de données SQL appelée "groupomania", le back se charge de migré les tables dans la BDD.
+Créez une base de données SQL appelée "groupomania", le back se charge de migrer les tables dans la BDD.
 
 __FRONT (REACT PROJECT)__  
 Dans le fichier frontend:
